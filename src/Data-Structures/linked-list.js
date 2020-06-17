@@ -131,7 +131,7 @@ function Demo() {
         idx = index
         index = -1;
         console.log("Found")
-        clearInterval(cancel)
+        //clearInterval(cancel)
       } else {
         index = list[index].next;
       }
@@ -151,7 +151,7 @@ function Demo() {
       } else {
         //found something. Kill it
         var nl = Object.assign([], list)
-        var prev = start //prev pointer
+        var prev = null //prev pointer
         var index = start;
         while (index !== idx) {
           prev = index
@@ -160,14 +160,26 @@ function Demo() {
         }
         console.log("tHere "+ prev + " " + index)
 
-        // if (list[prev].next === -1) {
-        //   //last element
-        //   setList([])
-        // } else {
+        if (prev === null && nl[index].next === -1) {
+          //only one element
+          setStart(-1)
+          setList([])
+
+        } else if(prev!==null){
+          //not first element
           var next = nl[index].next //next pointer
           nl[prev].next = next
+          console.log(nl)
           setList(nl)
-        // }
+        }else{
+          //first element
+          var nxt = nl[index].next //next pointer
+          //nl[index].next = nxt
+          setStart(nxt)
+          nl.splice(index,1)
+          console.log(nl)
+          setList(nl)
+        }
 
       }
 
