@@ -19,14 +19,15 @@ function Demo() {
   const [searchVal, setSearchVal] = useState();
 
   function add(addEnd) {
-    let newList = list.slice();
+    let newList = list.map(v => Object.assign({}, v, {
+      "highlight": false,
+    }));
     let added = false;
     const newItem = {
       "next": addEnd ? -1 : start,
       "value": addVal,
       "highlight": false,
     }
-    console.log(newItem)
     // Add new item in next undefined slot
     let i = 0;
     for (; i < newList.length && !added; i++) {
@@ -57,37 +58,34 @@ function Demo() {
   }
 
   function search() {
-    // TODO implement actual search animation
-    let index = start
-    // let cancel = setInterval(() => {
-    //   if (index === -1) {
-    //     setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
-    //     console.log(list)
-    //     clearInterval(cancel)
-    //     return;
-    //   }
-    //   setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
-    //   index=list[index].next;
-    // }, 300);
-    var nl=Object.assign([], list)
-    console.log(nl)
-    while (index!==-1){
-        var current = list[index]
-        current.highlight=true
-        setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
-        if(current.value===searchVal){
-          console.log("Found")
-          //list[index]=current
-        }else {
-          current.highlight = false
+    setList(list.map((v, i) => Object.assign({}, v, {
+      "highlight": false,
+    })));
+
+    let index = start;
+    let visted = [];
+    let cancel = setInterval(() => {
+      if (index === -1) {
+        setList(list.map((v, i) => Object.assign({}, v, {
+          "highlight": visted.includes(i)
+            && v.value === searchVal,
+        })));
+        clearInterval(cancel)
+        return;
       }
-      setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
+      setList(list.map((v, i) => Object.assign({}, v, {
+        "highlight": i === index
+          || (v.value === searchVal && visted.includes(i)),
+      })));
+      visted.push(index);
 
+      // If found item stop
+      if (index !== -1 && list[index].value === searchVal) {
+        index = -1;
+      } else {
         index=list[index].next;
-    }
-    setList(nl)
-    
-
+      }
+    }, 1000);
   }
 
   // Generate the nodes in correct order for visualization

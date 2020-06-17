@@ -25,5 +25,9 @@
 }
 
 .highlight {
-  transform: scale(1.5);
+  transform: scale(1.25);
+}
+
+.highlight::before, .highlight::before {
+  transform: scale(0.8) translateX(-4px);
 }
