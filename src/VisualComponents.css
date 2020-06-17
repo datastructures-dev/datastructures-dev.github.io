@@ -1,0 +1,12 @@
+.node {
+  background-color: var(--white);
+  box-shadow: 0px 0px 10px var(--shadow);
+  padding: 1.5rem 0.75rem;
+  margin: auto 1rem;
+  border-radius: 5px;
+  transition: transform ease-in-out 0.25s;
+}
+
+.highlight {
+  transform: scale(1.5);
+}

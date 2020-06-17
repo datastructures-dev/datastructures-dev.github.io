@@ -1,0 +1,66 @@
+.VisualPage {
+  width: 95vw;
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "header header" "about complexity" "controls controls" "visual visual";
+}
+
+@media only screen and (max-width: 750px) {
+  .VisualPage {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: "header" "about" "controls" "visual" "complexity";
+  }
+}
+
+.VisualPage > h1 {
+  grid-area: header;
+  text-align: center;
+  border-bottom: 1px solid var(--darkgray);
+}
+
+.VisualPage .About {
+  grid-area: about;
+}
+
+.VisualPage .Complexity {
+  grid-area: complexity;
+}
+
+.VisualPage .Complexity table {
+  margin: 0 auto;
+}
+
+.VisualPage .Complexity th {
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--darkgray);
+}
+
+/* Prevent wrapping of second column i.e. the complexity function */
+.VisualPage .Complexity td:nth-of-type(2) {
+  white-space: nowrap;
+}
+
+.VisualPage .Controls {
+  grid-area: controls;
+  display: flex;
+  flex-direction: column;
+}
+
+.VisualPage .Controls .ControlGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.VisualPage .Controls .ControlGroup * {
+  margin: auto 0.5rem;
+}
+
+.VisualPage .Visual {
+  grid-area: visual;
+  display: flex;
+}
