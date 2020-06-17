@@ -10,6 +10,7 @@ import {
   Node,
 } from '../VisualComponents.js';
 
+
 function Demo() {
   const [list, setList] = useState([]);
   const [start, setStart] = useState(-1);
@@ -25,7 +26,7 @@ function Demo() {
       "value": addVal,
       "highlight": false,
     }
-
+    console.log(newItem)
     // Add new item in next undefined slot
     let i = 0;
     for (; i < newList.length && !added; i++) {
@@ -57,7 +58,36 @@ function Demo() {
 
   function search() {
     // TODO implement actual search animation
-    setList(list.map((v,i) => Object.assign({}, v, {"highlight": v.value === searchVal})));
+    let index = start
+    // let cancel = setInterval(() => {
+    //   if (index === -1) {
+    //     setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
+    //     console.log(list)
+    //     clearInterval(cancel)
+    //     return;
+    //   }
+    //   setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
+    //   index=list[index].next;
+    // }, 300);
+    var nl=Object.assign([], list)
+    console.log(nl)
+    while (index!==-1){
+        var current = list[index]
+        current.highlight=true
+        setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
+        if(current.value===searchVal){
+          console.log("Found")
+          //list[index]=current
+        }else {
+          current.highlight = false
+      }
+      setList(list.map((v, i) => Object.assign({}, v, { "highlight": i === index })));
+
+        index=list[index].next;
+    }
+    setList(nl)
+    
+
   }
 
   // Generate the nodes in correct order for visualization
@@ -119,7 +149,7 @@ export default function LinkedList(props) {
           "name": "Average wasted space",
           "complexity": "Θ(1)",
         },
-      ]}/>
+      ]} />
       <Demo />
     </VisualPage>
   );
