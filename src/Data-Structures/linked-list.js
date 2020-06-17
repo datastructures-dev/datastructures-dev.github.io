@@ -17,6 +17,7 @@ function Demo() {
   const [end, setEnd] = useState(-1);
   const [addVal, setAddVal] = useState();
   const [searchVal, setSearchVal] = useState();
+  const [removeVal, setRemoveVal] = useState();
 
   function add(addEnd) {
     let newList = list.map(v => Object.assign({}, v, {
@@ -60,6 +61,7 @@ function Demo() {
     setList(newList);
   }
 
+
   function search() {
     setList(list.map((v, i) => Object.assign({}, v, {
       "highlight": false,
@@ -67,14 +69,14 @@ function Demo() {
 
     let index = start;
     let visted = [];
+    var idx = null;
+    var found = false;
     let cancel = setInterval(() => {
       if (index === -1) {
         setList(list.map((v, i) => Object.assign({}, v, {
           "highlight": visted.includes(i)
             && v.value === searchVal,
         })));
-        clearInterval(cancel)
-        return;
       }
       setList(list.map((v, i) => Object.assign({}, v, {
         "highlight": i === index
@@ -84,12 +86,77 @@ function Demo() {
 
       // If found item stop
       if (index !== -1 && list[index].value === searchVal) {
+        idx = index
         index = -1;
+        found = true;
+        clearInterval(cancel)
       } else {
-        index=list[index].next;
+        index = list[index].next;
       }
     }, 1000);
+
+    return [found, idx, searchVal] //return if something was found
+
   }
+
+  //make em global
+  var idx = null;
+  var found = false;
+
+  function searchRemove(searchVal) {
+    setList(list.map((v, i) => Object.assign({}, v, {
+      "highlight": false,
+    })));
+
+    let index = start;
+    let visted = [];
+
+    let cancel = setInterval(() => {
+      if (index === -1) {
+        setList(list.map((v, i) => Object.assign({}, v, {
+          "highlight": false
+            && v.value === searchVal,
+        })));
+        clearInterval(cancel)
+        return;
+
+      }
+      setList(list.map((v, i) => Object.assign({}, v, {
+        "highlight": false
+          || (v.value === searchVal && visted.includes(i)),
+      })));
+      visted.push(index);
+
+      // If found item stop
+      if (index !== -1 && list[index].value === searchVal) {
+        idx = index
+        index = -1;
+        found = true;
+        //console.log("Found")
+
+      } else {
+        index = list[index].next;
+      }
+    }, 0);
+
+
+  }
+
+
+  function remove() {
+    searchRemove(removeVal)
+    setTimeout(function () {
+      console.log(found, idx)
+      if (found === false) {
+        alert("Value: " + removeVal + " is not in the list")
+      } else {
+          //found somethinf. Kill it
+
+      }
+
+    }, 100);
+  }
+
 
   // Generate the nodes in correct order for visualization
   const ordered = [];
@@ -113,6 +180,11 @@ function Demo() {
           <label htmlFor="search">Search</label>
           <input name="search" onChange={e => setSearchVal(e.target.value)}></input>
           <button onClick={search}>Search</button>
+        </ControlGroup>
+        <ControlGroup>
+          <label htmlFor="remove">Remove</label>
+          <input name="remove" onChange={e => setRemoveVal(e.target.value)}></input>
+          <button onClick={remove}>Remove</button>
         </ControlGroup>
       </Controls>
       <Visualization>
