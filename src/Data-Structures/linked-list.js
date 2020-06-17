@@ -49,6 +49,9 @@ function Demo() {
         newList[end].next = i;
         setEnd(i);
       }
+
+      if (start === -1)
+        setStart(i);
     } else {
       setStart(i);
       if (end === -1)
