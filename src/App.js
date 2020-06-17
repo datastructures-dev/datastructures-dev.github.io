@@ -24,7 +24,7 @@ function AboutPage() {
   return (
     <>
       <h1>About</h1>
-      <p>A repository of reactive visualisations of common Abstract Data Structures and standard Algorithms created by <a href="https://danjones.dev">Daniel Jones</a> and <a href="https://people.rit.edu/dl1683/">Devansh Sudan</a></p>
+      <p>A repository of reactive visualisations of common Abstract Data Structures and standard Algorithms created by <a href="https://danjones.dev">Daniel Jones</a> and <a href="https://people.rit.edu/dl1683/">Devansh</a></p>
       <p>This project was originally inspired by RocksVashi Labs' <a href="https://rocksvashi.github.io/DataStructuresInJavaScript/index.html">project</a></p>
     </>
   );
