@@ -5,6 +5,23 @@
   margin: auto 1rem;
   border-radius: 5px;
   transition: transform ease-in-out 0.25s;
+  position: relative;
+}
+
+.node::after {
+  display: block;
+  content: '';
+  background-color: var(--gray);
+  width: 2rem;
+  position: absolute;
+  height: 1rem;
+  left: 100%;
+  top: calc(50% - 0.5rem);
+  clip-path: polygon(0% 37.5%, 40% 37.5%, 40% 0%, 65% 37.5%, 100% 37.5%, 100% 62.5%, 65% 62.5%, 40% 100%, 40% 62.5%, 0% 62.5%);
+}
+
+.node:last-child::after {
+  display: none;
 }
 
 .highlight {
