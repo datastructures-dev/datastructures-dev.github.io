@@ -69,14 +69,15 @@ function Demo() {
 
     let index = start;
     let visted = [];
-    var idx = null;
-    var found = false;
+
     let cancel = setInterval(() => {
       if (index === -1) {
         setList(list.map((v, i) => Object.assign({}, v, {
           "highlight": visted.includes(i)
             && v.value === searchVal,
         })));
+        clearInterval(cancel)
+        return;
       }
       setList(list.map((v, i) => Object.assign({}, v, {
         "highlight": i === index
@@ -86,16 +87,14 @@ function Demo() {
 
       // If found item stop
       if (index !== -1 && list[index].value === searchVal) {
-        idx = index
         index = -1;
-        found = true;
-        clearInterval(cancel)
+
       } else {
         index = list[index].next;
       }
     }, 1000);
 
-    return [found, idx, searchVal] //return if something was found
+
 
   }
 
@@ -114,30 +113,30 @@ function Demo() {
     let cancel = setInterval(() => {
       if (index === -1) {
         setList(list.map((v, i) => Object.assign({}, v, {
-          "highlight": false
+          "highlight": visted.includes(i)
             && v.value === searchVal,
         })));
         clearInterval(cancel)
         return;
-
       }
       setList(list.map((v, i) => Object.assign({}, v, {
-        "highlight": false
+        "highlight": i === index
           || (v.value === searchVal && visted.includes(i)),
       })));
       visted.push(index);
 
       // If found item stop
       if (index !== -1 && list[index].value === searchVal) {
+        found = true
         idx = index
         index = -1;
-        found = true;
-        //console.log("Found")
-
+        console.log("Found")
+        clearInterval(cancel)
       } else {
         index = list[index].next;
       }
-    }, 0);
+    }, 500);
+
 
 
   }
@@ -146,25 +145,33 @@ function Demo() {
   function remove() {
     searchRemove(removeVal)
     setTimeout(function () {
-      console.log(found, idx)
+      // console.log(found, idx)
       if (found === false) {
         alert("Value: " + removeVal + " is not in the list")
       } else {
-          //found something. Kill it
-          var nl=Object.assign([],list)
-          var prev=null //prev pointer
-          var index=start;
-          while(index !== idx){
-              prev=index
-              index = list[index].next
-          }
-          var next=list[index].next //next pointer
+        //found something. Kill it
+        var nl = Object.assign([], list)
+        var prev = start //prev pointer
+        var index = start;
+        while (index !== idx) {
+          prev = index
+          index = list[index].next
+          console.log("Here "+ prev + " " + index)
+        }
+        console.log("tHere "+ prev + " " + index)
+
+        // if (list[prev].next === -1) {
+        //   //last element
+        //   setList([])
+        // } else {
+          var next = nl[index].next //next pointer
           nl[prev].next = next
           setList(nl)
+        // }
 
       }
 
-    }, 100);
+    }, 2000);
   }
 
 
