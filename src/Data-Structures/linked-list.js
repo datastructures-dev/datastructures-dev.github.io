@@ -150,7 +150,17 @@ function Demo() {
       if (found === false) {
         alert("Value: " + removeVal + " is not in the list")
       } else {
-          //found somethinf. Kill it
+          //found something. Kill it
+          var nl=Object.assign([],list)
+          var prev=null //prev pointer
+          var index=start;
+          while(index !== idx){
+              prev=index
+              index = list[index].next
+          }
+          var next=list[index].next //next pointer
+          nl[prev].next = next
+          setList(nl)
 
       }
 
