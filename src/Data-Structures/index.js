@@ -5,6 +5,8 @@ import {
   GenerateRoutes,
 } from '../Routings.js';
 import LinkedList from './linked-list.js';
+import Stack from './stack.js'
+import Queue from './queue.js'
 
 const prefix = "/data-structures";
 const dataStructures = [
@@ -16,12 +18,12 @@ const dataStructures = [
   {
     "name": "Queue",
     "route": "queue",
-    "page": DSADefaultPage,
+    "page": Queue,
   },
   {
     "name": "Stack",
     "route": "stack",
-    "page": DSADefaultPage,
+    "page": Stack,
   },
   {
     "name": "Linked List",
