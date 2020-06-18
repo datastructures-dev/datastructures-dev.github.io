@@ -43,19 +43,19 @@ function Demo() {
     // Fix old last node's pointer if addEnd
     if (addEnd) {
       if (end === -1) {
+        //null list
+        setStart(i)
         setEnd(i);
       } else {
         newList[end].next = i;
         setEnd(i);
       }
-
-      if (start === -1)
-        setStart(i);
     } else {
       setStart(i);
       if (end === -1)
         setEnd(i);
     }
+    console.log("adding: "+newList)
     setList(newList);
   }
 
@@ -73,11 +73,22 @@ function Demo() {
         }else{
             var nxt = nl[index].next 
           //nl[index].next = nxt
-          console.log(nxt)
-          setStart(nxt)
-          nl.splice(index,1)
-          console.log(nl)
-          setList(nl)
+          if(nxt===-1){
+            //next is empty
+            console.log("Empyting everything")
+            setEnd(-1)
+            setStart(-1)
+            setList([])
+          }else{
+            //fix this
+            console.log(nxt+" "+start+" "+end)
+            console.log(nl)
+            nl.splice(index,1)
+            setStart(nxt)
+            setList(nl)
+            console.log(nl)
+
+          }
         }
         
   }
@@ -87,6 +98,7 @@ function Demo() {
   const ordered = [];
   let i = start;
   while (i !== -1) {
+    console.log("Here: "+i)
     ordered.push(
       <Node key={i} highlight={list[i].highlight}>{list[i].value}</Node>
     );
