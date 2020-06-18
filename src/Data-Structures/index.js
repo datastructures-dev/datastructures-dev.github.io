@@ -1,19 +1,10 @@
 import React from 'react';
 import {
+  DSADefaultPage,
   GenerateLinks,
   GenerateRoutes,
 } from '../Routings.js';
 import LinkedList from './linked-list.js';
-
-function DSADefaultPage() {
-  return (
-    <>
-      <h1>We haven't implemented this yet :-(</h1>
-      <p>Maybe it's available at <a href="/old">/old</a></p>
-      <p>Or you could help us implement it <a href="https://github.com/datastructures-dev/datastructures-dev.github.io/">here</a></p>
-    </>
-  );
-}
 
 const prefix = "/data-structures";
 const dataStructures = [
@@ -73,18 +64,7 @@ export function DSLinks() {
   return (
     <>
       <h2>Data Structures</h2>
-      <ul>
-        { GenerateLinks({
-            "prefix": prefix,
-            "pages": dataStructures,
-        }).map((ds, i) => {
-          return (
-            <li key={i}>
-              {ds}
-            </li>
-          )
-        })}
-      </ul>
+      <GenerateLinks prefix={prefix} pages={dataStructures}/>
     </>
   );
 }

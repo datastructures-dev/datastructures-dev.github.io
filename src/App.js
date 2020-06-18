@@ -7,6 +7,7 @@ import {
   Link,
 } from 'react-router-dom';
 import { DSRoutes, DSLinks } from './Data-Structures';
+import { AlgoRoutes, } from './Algorithms';
 import './App.css';
 
 function HomePage() {
@@ -50,6 +51,9 @@ export default function App() {
       <Switch>
         <Route path="/data-structures">
           <DSRoutes />
+        </Route>
+        <Route path="/algorithms">
+          <AlgoRoutes />
         </Route>
         <Route exact path="/">
           <HomePage />
