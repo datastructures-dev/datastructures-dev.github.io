@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import VisualPage, {
   About,
   Complexity,
@@ -6,128 +7,95 @@ import VisualPage, {
   ControlGroup,
   Visualization,
 } from '../VisualPage.js';
-import {
-  Node,
-} from '../VisualComponents.js';
+import './Styles/queue.css';
 
+function Queue(props) {
+  return (
+    <div className="queue">
+      {props.children}
+    </div>
+  );
+}
+
+function QueueNode(props) {
+  return (
+    <CSSTransition
+      appear
+      in={props.show}
+      onExited={props.onExited}
+      timeout={200}
+      unmountOnExit
+      classNames="queue-node"
+    >
+      <div className={"queue-node" + (props.highlight ? " highlight" : "")}>
+        {props.children}
+      </div>
+    </CSSTransition>
+  );
+}
 
 function Demo() {
   const [list, setList] = useState([]);
-  const [start, setStart] = useState(-1);
-  const [end, setEnd] = useState(-1);
   const [addVal, setAddVal] = useState();
 
-  function add(addEnd) {
-    let newList = list.map(v => Object.assign({}, v, {
-      "highlight": false,
-    }));
-    let added = false;
-    const newItem = {
-      "next": addEnd ? -1 : start,
-      "value": addVal,
-      "highlight": false,
-    }
-    // Add new item in next undefined slot
-    let i = 0;
-    for (; i < newList.length && !added; i++) {
-      if (newList[i] === undefined) {
-        newList[i] = newItem;
-        added = true;
+  function add() {
+    setList([
+      ...list,
+      {
+        "value": addVal,
+        "highlight": false,
+        "show": true,
       }
-    }
-    if (!added) {
-      i = newList.length;
-      newList.push(newItem);
-    }
-
-    // Fix old last node's pointer if addEnd
-    if (addEnd) {
-      if (end === -1) {
-        //null list
-        setStart(i)
-        setEnd(i);
-      } else {
-        newList[end].next = i;
-        setEnd(i);
-      }
-    } else {
-      setStart(i);
-      if (end === -1)
-        setEnd(i);
-    }
-    console.log("adding: "+newList)
-    setList(newList);
+    ]);
   }
-
-
-  
-  
 
   function remove() {
-    
-        //found something. Kill it
-        var nl = Object.assign([], list)
-        var index = start;
-        if(start===-1){
-            alert("Dequeuing from null")
-        }else{
-            var nxt = nl[index].next 
-          //nl[index].next = nxt
-          if(nxt===-1){
-            //next is empty
-            console.log("Empyting everything")
-            setEnd(-1)
-            setStart(-1)
-            setList([])
-          }else{
-            //fix this
-            console.log(nxt+" "+start+" "+end)
-            console.log(nl)
-            nl.splice(index,1)
-            setStart(nxt)
-            setList(nl)
-            console.log(nl)
-
-          }
-        }
-        
+    setList([
+      Object.assign({}, list[0], {
+        "show": false,
+      }),
+      ...(list.slice(1)),
+    ]);
   }
 
-
-  // Generate the nodes in correct order for visualization
-  const ordered = [];
-  let i = start;
-  while (i !== -1) {
-    console.log("Here: "+i)
-    ordered.push(
-      <Node key={i} highlight={list[i].highlight}>{list[i].value}</Node>
-    );
-    i = list[i].next;
+  function onExited() {
+    setList(list.slice(1));
   }
+
   return (
     <>
       <Controls>
         <ControlGroup>
           <label htmlFor="add">Add item</label>
           <input name="add" type="text" onChange={e => setAddVal(e.target.value)}></input>
-          <button onClick={() => add(true)}>Enqueue</button>
+          <button onClick={add}>Enqueue</button>
         </ControlGroup>
-        
         <ControlGroup>
-          {/* <label htmlFor="remove">Remove</label> */}
-          {/* <input name="remove" onChange={e => setRemoveVal(e.target.value)}></input> */}
           <button onClick={remove}>Dequeue</button>
         </ControlGroup>
-      
       </Controls>
       <Visualization>
-        {ordered}
+        <Queue>
+          {list.map((node, i) => {
+            return (
+              <QueueNode
+                key={i}
+                index={i}
+                show={node.show}
+                highlight={node.highlight}
+                onExited={onExited}
+              >
+                {node.value}
+              </QueueNode>
+            );
+          })}
+        </Queue>
       </Visualization>
     </>
   );
 }
 
-export default function Queue(props) {
+export default function QueuePage(props) {
   return (
     <VisualPage title="Queue">
       <About>
@@ -144,7 +112,6 @@ export default function Queue(props) {
           "name": "Enqueue/Dequeue Element",
           "complexity": "Θ(1)"
         },
-        
         {
           "name": "Average wasted space",
           "complexity": "Θ(1)",
