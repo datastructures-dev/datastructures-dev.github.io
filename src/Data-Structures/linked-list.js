@@ -6,10 +6,23 @@ import VisualPage, {
   ControlGroup,
   Visualization,
 } from '../VisualPage.js';
-import {
-  Node,
-} from '../VisualComponents.js';
+import './Styles/linked-list.css';
 
+export function LinkedList(props) {
+  return (
+    <div className="linked-list">
+      {props.children}
+    </div>
+  );
+}
+
+function LinkedListNode(props) {
+  return (
+    <div className={'linked-list-node' + (props.highlight ? ' highlight' : '')}>
+      {props.children}
+    </div>
+  );
+}
 
 function Demo() {
   const [list, setList] = useState([]);
@@ -192,7 +205,7 @@ function Demo() {
   let i = start;
   while (i !== -1) {
     ordered.push(
-      <Node key={i} highlight={list[i].highlight}>{list[i].value}</Node>
+      <LinkedListNode key={i} highlight={list[i].highlight}>{list[i].value}</LinkedListNode>
     );
     i = list[i].next;
   }
@@ -217,13 +230,15 @@ function Demo() {
         </ControlGroup>
       </Controls>
       <Visualization>
-        {ordered}
+        <LinkedList>
+          {ordered}
+        </LinkedList>
       </Visualization>
     </>
   );
 }
 
-export default function LinkedList(props) {
+export default function LinkedListPage(props) {
   return (
     <VisualPage title="Linked List">
       <About>

@@ -1,4 +1,9 @@
-.node {
+.linked-list {
+  width: 100%;
+  display: flex;
+}
+
+.linked-list-node {
   background-color: var(--white);
   box-shadow: 0px 0px 10px var(--shadow);
   padding: 1.5rem 0.75rem;
@@ -8,7 +13,7 @@
   position: relative;
 }
 
-.node::after {
+.linked-list-node::after {
   display: block;
   content: '';
   background-color: var(--gray);
@@ -20,14 +25,14 @@
   clip-path: polygon(0% 37.5%, 40% 37.5%, 40% 0%, 65% 37.5%, 100% 37.5%, 100% 62.5%, 65% 62.5%, 40% 100%, 40% 62.5%, 0% 62.5%);
 }
 
-.node:last-child::after {
+.linked-list-node:last-child::after {
   display: none;
 }
 
-.highlight {
+.linked-list-node.highlight {
   transform: scale(1.25);
 }
 
-.highlight::before, .highlight::before {
+.linked-list-node.highlight::before, .linked-list-node.highlight::before {
   transform: scale(0.8) translateX(-4px);
 }
