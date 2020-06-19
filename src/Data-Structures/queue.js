@@ -9,7 +9,7 @@ import VisualPage, {
 } from '../VisualPage.js';
 import './Styles/queue.css';
 
-function Queue(props) {
+export function Queue(props) {
   return (
     <div className="queue">
       {props.children}
@@ -17,7 +17,7 @@ function Queue(props) {
   );
 }
 
-function QueueNode(props) {
+export function QueueNode(props) {
   return (
     <CSSTransition
       appear

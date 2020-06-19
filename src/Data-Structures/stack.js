@@ -9,7 +9,7 @@ import VisualPage, {
 } from '../VisualPage.js';
 import './Styles/stack.css';
 
-function Stack(props) {
+export function Stack(props) {
   return (
     <div className="stack">
       {props.children}
@@ -17,7 +17,7 @@ function Stack(props) {
   );
 }
 
-function StackNode(props) {
+export function StackNode(props) {
   return (
     <CSSTransition
       appear
