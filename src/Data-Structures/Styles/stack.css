@@ -1,0 +1,41 @@
+.stack {
+  display: flex;
+  width: 50%;
+  min-height: 20rem;
+  padding-top: 5rem;
+  border: 5px solid var(--gray);
+  border-top: none;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+}
+
+.stack-node {
+  overflow: hidden;
+  background-color: var(--white);
+  box-shadow: 0px 0px 10px var(--shadow);
+  margin: 0.5rem 1rem;
+  padding: 1rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.25s ease-out;
+}
+
+.stack-node-appear {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.stack-node-appear-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stack-node-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stack-node-exit-active {
+  opacity: 0;
+  transform: translateY(-50px);
+}

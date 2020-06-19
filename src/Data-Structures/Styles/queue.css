@@ -5,7 +5,7 @@
   border-top: 5px solid var(--gray);
   border-bottom: 5px solid var(--gray);
   flex-direction: row-reverse;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
 }
 
 .queue-node {

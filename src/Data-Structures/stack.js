@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import VisualPage, {
   About,
   Complexity,
@@ -6,115 +7,95 @@ import VisualPage, {
   ControlGroup,
   Visualization,
 } from '../VisualPage.js';
-import {
-  Node,
-} from '../VisualComponents.js';
+import './Styles/stack.css';
 
+function Stack(props) {
+  return (
+    <div className="stack">
+      {props.children}
+    </div>
+  );
+}
+
+function StackNode(props) {
+  return (
+    <CSSTransition
+      appear
+      in={props.show}
+      onExited={props.onExited}
+      timeout={200}
+      unmountOnExit
+      classNames="stack-node"
+    >
+      <div className={"stack-node" + (props.highlight ? " highlight" : "")}>
+        {props.children}
+      </div>
+    </CSSTransition>
+  );
+}
 
 function Demo() {
   const [list, setList] = useState([]);
-  const [start, setStart] = useState(-1);
-  const [end, setEnd] = useState(-1);
   const [addVal, setAddVal] = useState();
 
-  function add(addEnd) {
-    let newList = list.map(v => Object.assign({}, v, {
-      "highlight": false,
-    }));
-    let added = false;
-    const newItem = {
-      "next": addEnd ? -1 : start,
-      "value": addVal,
-      "highlight": false,
-    }
-    // Add new item in next undefined slot
-    let i = 0;
-    for (; i < newList.length && !added; i++) {
-      if (newList[i] === undefined) {
-        newList[i] = newItem;
-        added = true;
+  function add() {
+    setList([
+      ...list,
+      {
+        "value": addVal,
+        "highlight": false,
+        "show": true,
       }
-    }
-    if (!added) {
-      i = newList.length;
-      newList.push(newItem);
-    }
-
-    // Fix old last node's pointer if addEnd
-    if (addEnd) {
-      if (end === -1) {
-        setEnd(i);
-      } else {
-        newList[end].next = i;
-        setEnd(i);
-      }
-
-      if (start === -1)
-        setStart(i);
-    } else {
-      setStart(i);
-      if (end === -1)
-        setEnd(i);
-    }
-    setList(newList);
+    ]);
   }
-
-
-  
-  
 
   function remove() {
-    
-        //found something. Kill it
-        var nl = Object.assign([], list)
-        var index = start;
-        if(start===-1){
-            alert("Popping from null")
-        }else{
-            var nxt = nl[index].next //next pointer
-          //nl[index].next = nxt
-          setStart(nxt)
-          nl.splice(index,1)
-          console.log(nl)
-          setList(nl)
-        }
-        
+    setList([
+      ...(list.slice(0, list.length - 1)),
+      Object.assign({}, list[list.length - 1], {
+        "show": false,
+      }),
+    ]);
   }
 
-
-  // Generate the nodes in correct order for visualization
-  const ordered = [];
-  let i = start;
-  while (i !== -1) {
-    ordered.push(
-      <Node key={i} highlight={list[i].highlight}>{list[i].value}</Node>
-    );
-    i = list[i].next;
+  function onExited() {
+    setList(list.slice(0, list.length - 1));
   }
+
   return (
     <>
       <Controls>
         <ControlGroup>
           <label htmlFor="add">Add item</label>
           <input name="add" type="text" onChange={e => setAddVal(e.target.value)}></input>
-          <button onClick={() => add(false)}>Push</button>
+          <button onClick={add}>Push</button>
         </ControlGroup>
-        
         <ControlGroup>
-          {/* <label htmlFor="remove">Remove</label> */}
-          {/* <input name="remove" onChange={e => setRemoveVal(e.target.value)}></input> */}
           <button onClick={remove}>Pop</button>
         </ControlGroup>
-      
       </Controls>
       <Visualization>
-        {ordered}
+        <Stack>
+          {list.map((node, i) => {
+            return (
+              <StackNode
+                key={i}
+                index={i}
+                show={node.show}
+                highlight={node.highlight}
+                onExited={onExited}
+              >
+                {node.value}
+              </StackNode>
+            );
+          })}
+        </Stack>
       </Visualization>
     </>
   );
 }
 
-export default function Stack(props) {
+export default function StackPage(props) {
   return (
     <VisualPage title="Stack">
       <About>
@@ -131,7 +112,6 @@ export default function Stack(props) {
           "name": "Push/Pop Element",
           "complexity": "Θ(1)"
         },
-        
         {
           "name": "Average wasted space",
           "complexity": "Θ(1)",

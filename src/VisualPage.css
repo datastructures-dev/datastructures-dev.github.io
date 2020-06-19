@@ -63,4 +63,5 @@
 .VisualPage .Visual {
   grid-area: visual;
   display: flex;
+  min-height: auto;
 }
