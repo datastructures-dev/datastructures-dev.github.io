@@ -4,6 +4,7 @@ import {
   GenerateLinks,
   GenerateRoutes,
 } from '../Routings.js';
+import Card, { CardGrid } from '../Components/Card.js';
 import LinkedList from './linked-list.js';
 import Stack from './stack.js'
 import Queue from './queue.js'
@@ -64,10 +65,12 @@ const dataStructures = [
 
 export function DSLinks() {
   return (
-    <>
-      <h2>Data Structures</h2>
-      <GenerateLinks prefix={prefix} pages={dataStructures}/>
-    </>
+    <CardGrid>
+      <Card>
+        <h4>Data Structures</h4>
+        <GenerateLinks prefix={prefix} pages={dataStructures}/>
+      </Card>
+    </CardGrid>
   );
 }
 

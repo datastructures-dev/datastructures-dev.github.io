@@ -4,6 +4,7 @@ import {
   GenerateLinks,
   GenerateRoutes,
 } from '../Routings.js';
+import Card, { CardGrid } from '../Components/Card.js';
 import { SearchLinks, SearchRoutes, } from './Search';
 import { SortingLinks, SortingRoutes, } from './Sorting';
 import { ShortestPathLinks, ShortestPathRoutes, } from './Shortest-Path';
@@ -26,14 +27,15 @@ export function AlgoLinks() {
   return (
     <>
       <h2>Algorithms</h2>
-      <h4>Search Algorithms</h4>
-      <SearchLinks />
-      <h4>Sorting Algorithms</h4>
-      <SortingLinks />
-      <h4>Shortest Path Algorithms</h4>
-      <ShortestPathLinks />
-      <h4>Others</h4>
-      <GenerateLinks prefix={prefix} pages={pages}/>
+      <CardGrid>
+        <SearchLinks />
+        <SortingLinks />
+        <ShortestPathLinks />
+        <Card>
+          <h4>Other Algorithms</h4>
+          <GenerateLinks prefix={prefix} pages={pages}/>
+        </Card>
+      </CardGrid>
     </>
   );
 }

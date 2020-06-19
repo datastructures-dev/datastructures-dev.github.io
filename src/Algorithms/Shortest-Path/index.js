@@ -4,6 +4,7 @@ import {
   GenerateLinks,
   GenerateRoutes,
 } from '../../Routings.js';
+import Card from '../../Components/Card.js';
 
 const prefix = '/algorithms/shortest-path';
 const pages = [
@@ -24,5 +25,12 @@ const pages = [
   },
 ];
 
-export const ShortestPathLinks  = () => <GenerateLinks  prefix={prefix} pages={pages}/>;
+export const ShortestPathLinks  = () => {
+  return (
+    <Card>
+      <h4>Shortest Path</h4>
+      <GenerateLinks  prefix={prefix} pages={pages}/>
+    </Card>
+  );
+}
 export const ShortestPathRoutes = () => <GenerateRoutes prefix={prefix} rootPage={ShortestPathLinks} pages={pages}/>;

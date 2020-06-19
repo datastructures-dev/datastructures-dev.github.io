@@ -1,0 +1,19 @@
+.card-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  padding: 2rem 1rem;
+  background-color: var(--white);
+  box-shadow: 0px 0px 10px var(--shadow);
+  border-radius: 10px;
+  margin: 0.5rem 1rem;
+  min-width: 250px;
+}
+
+.card h4 {
+  text-align: center;
+}
