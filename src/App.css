@@ -1,0 +1,46 @@
+.NavBar {
+  width: 100vw;
+  height: 3rem;
+  background-color: var(--pinkred);
+  margin-bottom: 1rem;
+}
+
+.NavBar nav {
+  display: flex;
+  height: inherit;
+  align-items: center;
+}
+
+.NavBar a {
+  position: relative;
+  text-align: center;
+  padding: 0 0.5rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: var(--white);
+  font-family: var(--headfont);
+  font-size: 1.5rem;
+  transition: color ease-in-out 0.2s;
+}
+
+.NavBar a:hover {
+  color: var(--offwhite);
+}
+
+.NavBar a:after {
+  display: block;
+  content: '';
+  position: absolute;
+  height: 2px;
+  left: 50%;
+  right: 50%;
+  bottom: -0.25rem;
+  background-color: var(--darkgray);
+  transition: all ease-in-out 0.2s;
+}
+
+.NavBar a:hover:after {
+  left: 0;
+  right: 0;
+}
+

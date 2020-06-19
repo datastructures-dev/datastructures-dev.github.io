@@ -16,7 +16,7 @@ function HomePage() {
       <h1>DSA Visualization</h1>
       <p>Visualizations of data structures and algorithms</p>
       <DSLinks />
-      <h3 style={{margin: "5rem auto", textAlign: "center"}}>We're still converting from the old design which can be accessed <a href="/old">here</a></h3>
+      <h3 style={{margin: "5rem auto", textAlign: "center"}}>We're still building this site so some links haven't been implemented yet!</h3>
     </>
   );
 }
@@ -26,7 +26,6 @@ function AboutPage() {
     <>
       <h1>About</h1>
       <p>A repository of reactive visualisations of common Abstract Data Structures and standard Algorithms created by <a href="https://danjones.dev">Daniel Jones</a> and <a href="https://people.rit.edu/dl1683/">Devansh</a></p>
-      <p>This project was originally inspired by RocksVashi Labs' <a href="https://rocksvashi.github.io/DataStructuresInJavaScript/index.html">project</a></p>
     </>
   );
 }

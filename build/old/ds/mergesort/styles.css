@@ -1,0 +1,180 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: arial;
+	margin-left:30px;
+}
+
+.area {
+	padding:30px;
+	border:1px solid blue;
+	margin-top:20px;
+	margin-bottom:20px;
+	width:100%;
+}
+
+.area tr td {
+	width:20px;
+	height:20px;
+	padding:5px;
+	color: #fff;
+	
+}
+
+input[type="text"] {
+	width: 380px;
+	height: 40px;
+	font-size: 14px;
+	margin: 0px;
+	padding: 10px;
+}
+
+button {
+	width: 100px;
+	height: 40px;
+	border: 0px;
+	background-color: green;
+	color: white;
+	margin: 0px;
+	padding: 0px;
+}
+
+.custom {
+	width: 50px;
+	text-align: center;
+	color: #000;
+	font-size: 18px;
+	background-color: #ececec;
+	border:1px solid #000;
+	box-shadow: 1px 1px 0px #999,
+                2px 2px 0px #999,
+                3px 3px 0px #999,
+                4px 4px 0px #999,
+                5px 5px 0px #999,
+                6px 6px 0px #999;
+}
+
+@
+-webkit-keyframes black-fade { 
+	0% {
+		background: #ccc;
+	}
+	100% {
+		background:#000;
+	}
+}
+
+
+@keyframes black-fade { 
+	0% {
+		background: #ccc;
+	}
+	100% {
+		background:#000;
+	}
+}
+
+.highlight {
+	-webkit-animation: black-fade 1s ease-in 1;
+	animation: black-fade 1s ease-in 1;
+}
+
+
+@-webkit-keyframes focus-fade { 
+	0% {
+		background: #c3c0c4;
+	}
+	100% {
+		background:#000;
+	}
+}
+
+@keyframes focus-fade { 
+	0% {
+		background: #c3c0c4;
+	}
+	100% {
+		background:#000;
+	}
+}
+
+.focus {
+	background-color: aqua;
+}
+
+.min {
+    -webkit-animation: focus-fade 1s ease-in 1;
+	animation: focus-fade 1s ease-in 1;
+	border-bottom:15px solid orange;
+}
+
+.max {
+    -webkit-animation: focus-fade 1s ease-in 1;
+	animation: focus-fade 1s ease-in 1;
+	border-bottom:15px solid green;
+}
+
+.selected {
+	/*-webkit-animation: focus-fade 1s ease-in 2;
+	//animation: focus-fade 1s ease-in 2;
+	*/
+	border:1px solid red;
+}
+
+.pivot {
+	border-bottom:25px solid blue;
+	color: #000;
+}
+.done {
+	color:green;
+}
+.sorted {
+	background-color: #AED6F1;
+	color: #000;
+	border:1px solid #000;
+	box-shadow: 1px 1px 0px #999,
+                2px 2px 0px #999,
+                3px 3px 0px #999,
+                4px 4px 0px #999,
+                5px 5px 0px #999,
+                6px 6px 0px #999;
+	
+}
+#bigotable tr td {
+	padding:10px;
+}
+
+#maintable {
+border:1px solid #000;
+}
+
+#maintable {
+border:1px solid #000;
+}
+#maintable tr:nth-child(odd) td{
+	background-color: #fff;
+	height:40px;
+	vertical-align: top;
+}
+#maintable tr:nth-child(even) td{
+	background-color: #eff1f4;
+	height:40px;
+	vertical-align: top;
+}
+
+
+#row li {
+	float:left;
+	margin:10px;
+	width:80px;
+	height:80px;
+	list-style: none;
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 60px;
+	position: relative;
+	left: 80px;
+	margin-bottom:70px;
+}
+
+#row li.odd { red; }

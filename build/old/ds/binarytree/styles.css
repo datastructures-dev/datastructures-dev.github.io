@@ -1,0 +1,48 @@
+canvas {
+    display: block;
+}
+
+body {
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form {
+    margin: 10px;
+    padding: 2px;
+}
+
+.input {
+    width: 488px;
+    height: 50px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    margin: 3px;
+}
+
+button {
+    font-size: 15px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #009973;
+    color: #fff;
+}
+
+button:hover {
+    font-size: 15px;
+    width: 120px;
+    height: 40px;
+    background-color: #33ffcc;
+    cursor: pointer;
+    border: none;
+    color: #000;
+    ;
+}
+
+#main td {
+    border-right: 1px solid #ccc;
+    ;
+}

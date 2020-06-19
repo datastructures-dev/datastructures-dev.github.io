@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel='stylesheet' href='styles.css'>
+<link rel='stylesheet' href='../styles/base.css'>
+</head>
+<body>
+<a href="../../index.html">Back</a>
+	<center>
+		<h1>Simple Singly Linked List Visualization Using JavaScript</h1>
+	</center>
+	<h4>What is a Linked list.</h4>
+	<p>Linked List is a linear data structure and it is very common
+		data structure which consists of group of nodes in a sequence which is
+		divided in two parts. Each node consists of its own data and the
+		address of the next node and forms a chain. <br />The below UI example would help in visualizing the linked list for three operations i.e Add, Search and Remove.</p>
+	<table border="0" width="50%" id="maintable">
+		<tr>
+			<td>Add</td>
+			<td><input type="number" value="" id="add" /> <input
+				type="checkbox" id="insertType" value="At front">Insert at
+				front</input>
+				<button onclick="add()">Add</button></td>
+		</tr>
+
+		<tr>
+			<td>Search</td>
+			<td><input type="text" value="" id="search" />
+				<button onclick="search()">Search</button></td>
+		</tr>
+
+		<tr>
+			<td>Remove</td>
+			<td><input type="text" value="" id="remove" />
+				<button onclick="remove()">Remove</button></td>
+		</tr>
+
+		<tr>
+			<td>Status</td>
+			<td id="status"></td>
+		</tr>
+
+		<tr>
+			<td>Runtime Complexity</td>
+			<td>
+				<table id="bigotable">
+					
+					<tr>
+						<td>Indexing</td>
+						<td>Insert/delete at beginning</td>
+						<td>Insert/delete at end (when last element is known)</td>
+						<td>Insert/delete in middle</td>
+						<td>Wasted space (average)</td>
+					</tr>
+					<tr>
+						<td style="background: #ffdddd">Θ(<i>n</i>)
+						</td>
+						<td style="background: #ddffdd">Θ(1)</td>
+						<td style="background: #ddffdd">Θ(1)</td>
+						<td style="background: #ffffdd">Θ(<i>n</i>) + Θ(1)
+						</td>
+						<td style="background: #ddffdd">Θ(1)</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+	<div class="area">
+		<span class="border-center" id="row"> </span>
+	</div>
+
+	<footer> Created by: <a href="https://github.com/dl1683/" target="_blank">Devansh </a></footer>
+
+	<a href="https://clustrmaps.com/site/1b8y5" title="Visit tracker"><img src="//clustrmaps.com/map_v2.png?cl=080808&w=300&t=tt&d=9xUm_E8_40fnI5e5UC6a1MUmDYwFKY6IK0BxFC7NEeE&co=ffffff&ct=808080" /></a>
+	
+</body>
+<script type="text/javascript"
+	src="../libs/jquery-1.11.0.min.js"></script>
+<script src="linkedlist.js"></script>
+<script src="page.js"></script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel='stylesheet' href='styles.css'>
+<link rel='stylesheet' href='../styles/base.css'>
+</head>
+<body>
+<a href="../../index.html">Back</a>
+	<center>
+		<h1>Search Algorithm Visualization Using JavaScript</h1>
+	</center>
+	<h4>What is a Search Algorithm.</h4>
+	<p>A search algorithm is an algorithm that retrieves information stored within some data structure.</p>
+	<p>Below are the few common approaches to implement search algorithms :</p>
+	<ul>
+		<li>Linear Search</li>
+		<li>Binary Search</li>
+		<li>Hashing based data search</li>
+	</ul>
+	<p> The below example covers how the Linear and Binary Search works</p>
+	<table border="0" width="50%" id="maintable">
+		
+		<tr>
+			<td>Add Items to Table(sorted)</td>
+			<td><input type="text"  id="add" value ="100" maxlength="3"/> <button onclick="addCol()">Add Items</button></td>
+		</tr>
+		
+		<tr>
+			<td>Search</td>
+			<td><input type="checkbox" id="isLinear">Linear Search</input>
+				<input type="text"  id="inp" /> <button onclick="find()">Search</button></td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td id="status"></td>
+		</tr>
+
+		<tr>
+			<td>Runtime Complexity</td>
+			<td>
+				<table id="bigotable" width="100%">
+					
+					<tr>
+						<td>Search</td>
+					</tr>
+					<tr>
+					<td>Linear</td>
+						<td style="background: #ffdddd">Θ(<i>n</i>)
+						</td>
+					</tr>
+					
+					<tr>
+					<td>Binary</td>
+						<td style="background: #ddffdd">Θ(<i>log<sub>2</sub>n</i>)
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+
+<table border="0" width="50%" class="area" id="row">
+<caption>Data Array</caption>
+	</table>
+
+	<footer> Created by: <a href="https://github.com/dl1683/" target="_blank">Devansh </a></footer>
+
+	<a href="https://clustrmaps.com/site/1b8y5" title="Visit tracker"><img src="//clustrmaps.com/map_v2.png?cl=080808&w=300&t=tt&d=9xUm_E8_40fnI5e5UC6a1MUmDYwFKY6IK0BxFC7NEeE&co=ffffff&ct=808080" /></a>
+	
+
+</body>
+<script type="text/javascript"
+	src="../libs/jquery-1.11.0.min.js"></script>
+<script src="search.js"></script>
+<script src="page.js"></script>
+</html>
