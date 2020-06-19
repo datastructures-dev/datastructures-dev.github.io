@@ -9,8 +9,7 @@ export function DSADefaultPage() {
   return (
     <>
       <h1>We haven't implemented this yet :-(</h1>
-      <p>Maybe it's available at <a href="/old">/old</a></p>
-      <p>Or you could help us implement it <a href="https://github.com/datastructures-dev/datastructures-dev.github.io/">here</a></p>
+      <p>Can you help us implement it <a href="https://github.com/datastructures-dev/datastructures-dev.github.io/">here</a></p>
     </>
   );
 }
