@@ -38,26 +38,27 @@ function Demo() {
   const [list, setList] = useState([]);
   const [addVal, setAddVal] = useState(-1);
   const [length, setLength] = useState(0);
+  const [index, setIndex] = useState(0);
 
   function add() {
     console.log("Adding: "+addVal+" "+length)
-    setList([
-      ...list,
-      {
-        "value": addVal,
-        "highlight": false,
-        "show": true,
-      }
-    ]);
+    var nl=Object.assign([],list)
+    nl[index]={
+      "value": addVal,
+      "highlight": false,
+      "show": true,
+    }
+    setList(nl)
   }
 
   function remove() {
-    setList([
-      Object.assign({}, list[0], {
-        "show": false,
-      }),
-      ...(list.slice(1)),
-    ]);
+    var nl=Object.assign([],list)
+    nl[index]={
+      "value": " ",
+      "highlight": false,
+      "show": true,
+    }
+    setList(nl)
   }
 
   function onExited() {
@@ -86,13 +87,15 @@ function Demo() {
           <input name="add" type="text" onChange={e => setLength(e.target.value)}></input>
           <button onClick={create}>Create Array</button>
         </ControlGroup>
+        <label htmlFor="index">Index</label>
+        <input name="index" type="number"  onChange={e => setIndex(e.target.value)}></input>
         <ControlGroup>
           <label htmlFor="add">Add item</label>
           <input name="add" type="text" onChange={e => setAddVal(e.target.value)}></input>
-          <button onClick={add}>Enqueue</button>
+          <button onClick={add}>Insert at Index</button>
         </ControlGroup>
         <ControlGroup>
-          <button onClick={remove}>Dequeue</button>
+          <button onClick={remove}>Remove from Index</button>
         </ControlGroup>
       </Controls>
       <Visualization>
