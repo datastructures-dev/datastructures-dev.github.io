@@ -35,7 +35,7 @@ function NavBar() {
     <header className="NavBar">
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/data-structures">Data Structues</Link>
+        <Link to="/data-structures">Data Structures</Link>
         <Link to="/algorithms">Algorithms</Link>
         <Link to="/about">About</Link>
       </nav>

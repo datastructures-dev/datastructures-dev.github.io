@@ -6,7 +6,7 @@ import {
 } from '../../Routings.js';
 import Card from '../../Components/Card.js';
 
-const prefix = '/algorithms/shortest-path';
+const prefix = '/algorithms/sorting';
 const pages = [
   {
     "name": "Bubble",
@@ -26,6 +26,11 @@ const pages = [
   {
     "name": "Quick",
     "route": "quick",
+    "page": DSADefaultPage,
+  },
+  {
+    "name": "Heap",
+    "route": "heap",
     "page": DSADefaultPage,
   },
   {

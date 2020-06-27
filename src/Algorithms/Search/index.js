@@ -6,7 +6,7 @@ import {
 } from '../../Routings.js';
 import Card from '../../Components/Card.js';
 
-const prefix = '/algorithms/shortest-path';
+const prefix = '/algorithms/search';
 const pages = [
   {
     "name": "Linear",
