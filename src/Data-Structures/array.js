@@ -9,9 +9,9 @@ import VisualPage, {
 } from '../VisualPage.js';
 import './Styles/queue.css';
 
-export function Queue(props) {
+export function Array(props) {
   return (
-    <div className="queue">
+    <div className="array">
       {props.children}
     </div>
   );
@@ -36,9 +36,11 @@ export function QueueNode(props) {
 
 function Demo() {
   const [list, setList] = useState([]);
-  const [addVal, setAddVal] = useState();
+  const [addVal, setAddVal] = useState(-1);
+  const [length, setLength] = useState(0);
 
   function add() {
+    console.log("Adding: "+addVal+" "+length)
     setList([
       ...list,
       {
@@ -62,9 +64,28 @@ function Demo() {
     setList(list.slice(1));
   }
 
+  function create(){
+    var l=[]
+    for(var i=0;i<length;i++){
+      l.push({
+        "value": " ",
+        "highlight": false,
+        "show": true,
+      })
+    }
+    setList(l)
+    console.log(list)
+  }
+
+  
   return (
     <>
       <Controls>
+      <ControlGroup>
+          <label htmlFor="create">Array Length</label>
+          <input name="add" type="text" onChange={e => setLength(e.target.value)}></input>
+          <button onClick={create}>Create Array</button>
+        </ControlGroup>
         <ControlGroup>
           <label htmlFor="add">Add item</label>
           <input name="add" type="text" onChange={e => setAddVal(e.target.value)}></input>
@@ -75,7 +96,7 @@ function Demo() {
         </ControlGroup>
       </Controls>
       <Visualization>
-        <Queue>
+        <Array>
           {list.map((node, i) => {
             return (
               <QueueNode
@@ -89,7 +110,7 @@ function Demo() {
               </QueueNode>
             );
           })}
-        </Queue>
+        </Array>
       </Visualization>
     </>
   );
@@ -97,19 +118,19 @@ function Demo() {
 
 export default function QueuePage(props) {
   return (
-    <VisualPage title="Queue">
+    <VisualPage title="Array">
       <About>
-        <h4>What is a Queue?</h4>
-        Queues are a FIFO (first in- first out) structure. They are used in a lot of reactive and UI related
-        tasks, think back button on browsers
+        <h4>What is an Array?</h4>
+        Arrays are sequential blocks of memory in a device that store data. They are not dynamic (size won't change).
+        They are extremely useful if we know that input will be bounded in within a fixed size (like pictures)
       </About>
       <Complexity complexity={[
         {
           "name": "Indexing",
-          "complexity": "Θ(n)"
+          "complexity": "Θ(1)"
         },
         {
-          "name": "Enqueue/Dequeue Element",
+          "name": "Set Element at Index",
           "complexity": "Θ(1)"
         },
         {

@@ -8,13 +8,14 @@ import Card, { CardGrid } from '../Components/Card.js';
 import LinkedList from './linked-list.js';
 import Stack from './stack.js'
 import Queue from './queue.js'
+import Array from './array.js'
 
 const prefix = "/data-structures";
 const dataStructures = [
   {
     "name": "Array",
     "route": "array",
-    "page": DSADefaultPage,
+    "page": Array,
   },
   {
     "name": "Queue",
