@@ -28,11 +28,7 @@ const pages = [
     "route": "quick",
     "page": DSADefaultPage,
   },
-  {
-    "name": "Heap",
-    "route": "heap",
-    "page": DSADefaultPage,
-  },
+  
   {
     "name": "Radix",
     "route": "radix",

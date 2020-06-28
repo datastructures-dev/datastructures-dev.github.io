@@ -9,13 +9,23 @@ import VisualPage, {
 } from '../VisualPage.js';
 import './Styles/queue.css';
 
-export function Array(props) {
+export function Heap(props) {
   return (
-    <div className="array">
+    <div className="heap">
       {props.children}
     </div>
   );
 }
+var __html = require('./heapsort/index.html');
+var template = { __html: __html };
+
+React.module.exports = React.createClass({
+  render: function() {
+    return(
+      <div dangerouslySetInnerHTML={template} />
+    );
+  }
+});
 
 export function QueueNode(props) {
   return (
@@ -99,7 +109,7 @@ function Demo() {
         </ControlGroup>
       </Controls>
       <Visualization>
-        <Array>
+        <Heap>
           {list.map((node, i) => {
             return (
               <QueueNode
@@ -113,7 +123,7 @@ function Demo() {
               </QueueNode>
             );
           })}
-        </Array>
+        </Heap>
       </Visualization>
     </>
   );
