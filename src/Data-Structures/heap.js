@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+// import  { Component } from 'react';
+// import Page from './heapsort/index.html';
+
 import VisualPage, {
   About,
   Complexity,
@@ -16,16 +19,7 @@ export function Heap(props) {
     </div>
   );
 }
-var __html = require('./heapsort/index.html');
-var template = { __html: __html };
 
-React.module.exports = React.createClass({
-  render: function() {
-    return(
-      <div dangerouslySetInnerHTML={template} />
-    );
-  }
-});
 
 export function QueueNode(props) {
   return (
@@ -44,48 +38,22 @@ export function QueueNode(props) {
   );
 }
 
+
 function Demo() {
   const [list, setList] = useState([]);
-  const [addVal, setAddVal] = useState(-1);
   const [length, setLength] = useState(0);
-  const [index, setIndex] = useState(0);
 
-  function add() {
-    //console.log("Adding: "+addVal+" "+length)
-    var nl=Object.assign([],list)
-    nl[index]={
-      "value": addVal,
-      "highlight": false,
-      "show": true,
-    }
-    setList(nl)
-  }
-
-  function remove() {
-    var nl=Object.assign([],list)
-    nl[index]={
-      "value": " ",
-      "highlight": false,
-      "show": true,
-    }
-    setList(nl)
-  }
+  
 
   function onExited() {
     setList(list.slice(1));
   }
 
   function create(){
-    var l=[]
-    for(var i=0;i<length;i++){
-      l.push({
-        "value": " ",
-        "highlight": false,
-        "show": true,
-      })
-    }
-    setList(l)
-    console.log(list)
+    //set HTML->./heapsort/index.html
+    // window.location="./heapsort/index.html" //does not work despite going to the correct path
+    window.location.replace("./heapsort/index.html")
+
   }
 
   
@@ -93,20 +61,11 @@ function Demo() {
     <>
       <Controls>
       <ControlGroup>
-          <label htmlFor="create">Array Length</label>
+          <label htmlFor="create">Len of randomized array</label>
           <input name="add" type="text" onChange={e => setLength(e.target.value)}></input>
           <button onClick={create}>Create Array</button>
         </ControlGroup>
-        <label htmlFor="index">Index</label>
-        <input name="index" type="number"  onChange={e => setIndex(e.target.value)}></input>
-        <ControlGroup>
-          <label htmlFor="add">Add item</label>
-          <input name="add" type="text" onChange={e => setAddVal(e.target.value)}></input>
-          <button onClick={add}>Insert at Index</button>
-        </ControlGroup>
-        <ControlGroup>
-          <button onClick={remove}>Remove from Index</button>
-        </ControlGroup>
+        
       </Controls>
       <Visualization>
         <Heap>
@@ -129,13 +88,12 @@ function Demo() {
   );
 }
 
-export default function QueuePage(props) {
+export  default function QueuePage(props) {
   return (
     <VisualPage title="Array">
       <About>
-        <h4>What is an Array?</h4>
-        Arrays are sequential blocks of memory in a device that store data. They are not dynamic (size won't change).
-        They are extremely useful if we know that input will be bounded in within a fixed size (like pictures)
+        <h4>What is a Heap?</h4>
+        The bane of my existance. 
       </About>
       <Complexity complexity={[
         {
