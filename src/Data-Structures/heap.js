@@ -25,6 +25,7 @@ export function Heap(props) {
   );
 }
 
+
 var htmlDoc=`<html>
 
 <head>
@@ -402,7 +403,13 @@ function run(){
     }
   }
 
-  
+`+function getPath(s,d){
+  return (`M ${s.x} ${s.y}
+  C ${(s.x + d.x) / 2} ${s.y},
+    ${(s.x + d.x) / 2} ${d.y},
+    ${d.x} ${d.y}`)
+}
++`
   // Creates a curved (diagonal) path from parent to the child nodes
   // switched around all the x's and y's from orig so it's verticle
   function diagonal(s, d) {
@@ -961,12 +968,6 @@ function run(){
 </html>`
  //come here Pt 2
 // const htmlDoc = {__html: Page};
-function getPath(s,d){
-  return (`M ${s.x} ${s.y}
-  C ${(s.x + d.x) / 2} ${s.y},
-    ${(s.x + d.x) / 2} ${d.y},
-    ${d.x} ${d.y}`)
-}
 export function QueueNode(props) {
   return (
     <CSSTransition
@@ -993,20 +994,23 @@ function Demo() {
     setList(list.slice(1));
   }
 
-  function include(file) { 
+  // function include() { 
   
-    var script  = document.createElement('script'); 
-    script.src  = file; 
-    script.type = 'text/javascript'; 
-    script.defer = true; 
+  //   var script  = document.createElement('script'); 
+  //   script.src  = getPath.toString(); 
+  //   script.type = 'text/javascript'; 
+  //   script.defer = true; 
+  //   alert(script)
+  //   // document.getElementsByTagName('head').item(0).appendChild(script); 
+  //   return script;
     
-    document.getElementsByTagName('head').item(0).appendChild(script); 
-    
-  } 
-  function create(){
-    
-  }
-  htmlDoc=getPath.toString()+htmlDoc
+  // } 
+  // function create(){
+  //   return `<script type="text/javascript">`+getPath.toString()+`</script>`
+  // }
+
+  // htmlDoc=include()+htmlDoc
+  // htmlDoc=create()+htmlDoc
   
   return (
     <>
