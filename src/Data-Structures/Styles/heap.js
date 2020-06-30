@@ -4,16 +4,16 @@
 // var d3 = require('d3')
 // This will make a heap node by node in a nice animation type thing.
 
-
+// const executeHome=function(){
   var arr = []
-  var d3,i,path;
+
   console.log("Here")
   makeRandArray()
   console.log(arr)
   var duration = 500; // 700 a good moderate speed
   var colorduration = 100;
   var textTransDuration = 700;
-  var swapDelay = 1000;
+  var swapDelay = 500;
   var textRemoveDuration = 3000;
   var compareDuration = 3000;
   var addColorDuration = 1000;
@@ -262,14 +262,7 @@
       })
       .on('end', function (d) {
 
-        /*
-                 nodeUpdate.select('circle.node')
-                 .transition()
-                 .duration(addColorDuration)
-                 .style("fill", function(d) {
-                             return "steelblue"//d._children ? "lightsteelblue" : "#fff";
-                         })
-                         */
+       
       })
 
     // Update the node attributes and style
@@ -884,7 +877,7 @@
   function makeRandArray() {
     var len = document.getElementById("len").value;
     console.log("s: "+len)
-    for (var idx = 0; idx < len; idx++) {
+    for (var i = 0; i < len; i++) {
       var ele=Math.floor(Math.random() * 100)
       console.log("pushing"+ele)
       arr.push(ele)
