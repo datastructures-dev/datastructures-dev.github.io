@@ -1,5 +1,0 @@
-I am submitting some python algorithims i have been working on my university course i am not sure if they will be of use as i cannot
-implement a front end as i lack the knowledge however they might be usable for the backend.
-
-Thanks 
-Ryan
