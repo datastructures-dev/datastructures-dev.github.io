@@ -1,7 +1,5 @@
 import React, { useState, Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
-// import  { Component } from 'react';
-// import Page from './heapsort/index.html';
 import InnerHTML from 'dangerously-set-html-content'
 
 // import './heapsort/static/heap.js'
@@ -1041,15 +1039,15 @@ function Demo() {
 
 export  default function QueuePage(props) {
   return (
-    <VisualPage title="Array">
+    <VisualPage title="Heap (sift down)">
       <About>
         <h4>What is a Heap?</h4>
         The bane of my existance. 
       </About>
       <Complexity complexity={[
         {
-          "name": "Indexing",
-          "complexity": "Θ(1)"
+          "name": "Sorting",
+          "complexity": "Θ(n*log(n))"
         },
         {
           "name": "Set Element at Index",
