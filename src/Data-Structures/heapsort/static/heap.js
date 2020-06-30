@@ -4,9 +4,8 @@
 // var d3 = require('d3')
 // This will make a heap node by node in a nice animation type thing.
 
-
+function run(){
   var arr = []
-  var d3,i,path;
   console.log("Here")
   makeRandArray()
   console.log(arr)
@@ -891,3 +890,4 @@
     }
     
   }
+}
