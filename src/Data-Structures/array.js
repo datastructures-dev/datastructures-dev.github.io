@@ -41,7 +41,6 @@ function Demo() {
   const [index, setIndex] = useState(0);
 
   function add() {
-    //console.log("Adding: "+addVal+" "+length)
     var nl=Object.assign([],list)
     nl[index]={
       "value": addVal,
@@ -75,7 +74,6 @@ function Demo() {
       })
     }
     setList(l)
-    console.log(list)
   }
 
   
