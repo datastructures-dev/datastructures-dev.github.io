@@ -39,6 +39,10 @@
   transition: all ease-in-out 0.2s;
 }
 
+.NavBar a.active:after {
+  background-color: var(--white);
+}
+
 .NavBar a:hover:after, .NavBar a.active:after {
   left: 0;
   right: 0;
