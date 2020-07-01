@@ -4,10 +4,10 @@ import {
   Switch,
   Route,
   Redirect,
-  Link,
 } from 'react-router-dom';
 import { DSRoutes, DSLinks } from './Data-Structures';
 import { AlgoRoutes, } from './Algorithms';
+import NavBar from './Components/NavBar.js';
 import './App.css';
 
 function HomePage() {
@@ -28,19 +28,6 @@ function AboutPage() {
       <p>A repository of reactive visualisations of common Abstract Data Structures and standard Algorithms created by <a href="https://danjones.dev">Daniel Jones</a> and <a href="https://people.rit.edu/dl1683/">Devansh</a></p>
     </>
   );
-}
-
-function NavBar() {
-  return (
-    <header className="NavBar">
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/data-structures">Data Structures</Link>
-        <Link to="/algorithms">Algorithms</Link>
-        <Link to="/about">About</Link>
-      </nav>
-    </header>
-  )
 }
 
 export default function App() {
