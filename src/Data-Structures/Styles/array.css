@@ -1,0 +1,46 @@
+.array {
+  display: flex;
+  flex-direction: row;
+  wrap: nowrap;
+  height: 1.5em;
+  font-size: 4rem;
+  font-family: var(--monospace);
+  align-items: center;
+}
+
+.array::before {
+  display: block;
+  content: '[';
+  font-size: 1.5em;
+}
+
+.array::after {
+  display: block;
+  content: ']';
+  font-size: 1.5em;
+}
+
+.array-index {
+  min-width: 1ch;
+  height: 1em;
+  margin: 0 0.5ch;
+  position: relative;
+  line-height: 1em;
+}
+
+.array-index::after {
+  display: block;
+  content: ',';
+  position: absolute;
+  right: -0.75ch;
+  bottom: -0.4em;
+  font-size: 0.75em;
+}
+
+.array-index:last-child {
+  margin-right: 0;
+}
+
+.array-index:last-child::after {
+  display: none;
+}

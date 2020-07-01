@@ -7,7 +7,7 @@ import VisualPage, {
   ControlGroup,
   Visualization,
 } from '../VisualPage.js';
-import './Styles/queue.css';
+import './Styles/array.css';
 
 export function Array(props) {
   return (
@@ -17,7 +17,7 @@ export function Array(props) {
   );
 }
 
-export function QueueNode(props) {
+export function ArrayIndex(props) {
   return (
     <CSSTransition
       appear
@@ -25,11 +25,11 @@ export function QueueNode(props) {
       onExited={props.onExited}
       timeout={200}
       unmountOnExit
-      classNames="queue-node"
+      classNames="array-index"
     >
-      <div className={"queue-node" + (props.highlight ? " highlight" : "")}>
+      <span className={"array-index" + (props.highlight ? " highlight" : "")}>
         {props.children}
-      </div>
+      </span>
     </CSSTransition>
   );
 }
@@ -102,7 +102,7 @@ function Demo() {
         <Array>
           {list.map((node, i) => {
             return (
-              <QueueNode
+              <ArrayIndex
                 key={i}
                 index={i}
                 show={node.show}
@@ -110,7 +110,7 @@ function Demo() {
                 onExited={onExited}
               >
                 {node.value}
-              </QueueNode>
+              </ArrayIndex>
             );
           })}
         </Array>
@@ -119,7 +119,7 @@ function Demo() {
   );
 }
 
-export default function QueuePage(props) {
+export default function(props) {
   return (
     <VisualPage title="Array">
       <About>
