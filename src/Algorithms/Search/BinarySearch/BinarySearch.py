@@ -18,6 +18,8 @@ def binary_search(Array, Search_Term):
             return mid
     return -1
 
+# USER INPUT
+
 # Insert your array here
 A = [1,2,3,4,7,9,12,14,18]
 # term to be searched

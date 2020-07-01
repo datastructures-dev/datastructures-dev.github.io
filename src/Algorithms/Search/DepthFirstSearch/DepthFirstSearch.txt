@@ -1,0 +1,19 @@
+Explanation of code as psudeocode would be to complicated for this :
+
+Explanation:
+
+    First, create a graph in a function.
+    Intialize a starting node and destination node.
+    Create a list for the visited nodes and stack for the next node to be visited.
+    Call the graph function.
+    Initially, the stack is empty.Push the starting node into the stack (stack.append(start) ).
+    Mark the starting node as visited (visited.append(start) ).
+    Repeat this process until all the neighbours are visited in the stack till the destination node is found.
+    If the destination node is found exit the while loop.
+    If the destination node is not present then “Not found” is printed.
+    Finally, print the path from starting node to the destination node.
+
+ Depth-First search which as the name hints at, explores possible vertices (from a supplied root) down each branch before backtracking. This property allows the algorithm to be implemented succinctly in both iterative and recursive forms. Below is a listing of the actions performed upon each visit to a node.
+
+    Mark the current vertex as being visited.
+    Explore each adjacent vertex that is not included in the visited set.
