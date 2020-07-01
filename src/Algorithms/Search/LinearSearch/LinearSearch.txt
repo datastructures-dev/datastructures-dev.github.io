@@ -1,0 +1,15 @@
+Linear Search is a very simple method for searching a list for a particular value. It is also called as sequential search, as it works by comparing the value to be searched sequentially with every element of the list one by one until a match is found.
+
+It is worst searching algorithm with worst case time complexity O (n).
+
+Performance 
+
+The best case of linear search algorithm is when VAL is equal to the first element of the list. In this case, only one comparison will be made.
+
+The worst case will happen when either VAL is not present in the array or it is equal to the last element of the list. In both the cases, n comparisons will have to be made.
+
+PsuedoCode
+
+    Start from the leftmost element of given arr[] and one by one compare element x with each element of arr[]
+    If x matches with any of the element, return the index value.
+    If x doesn’t match with any of elements in arr[] , return -1 or element not found.

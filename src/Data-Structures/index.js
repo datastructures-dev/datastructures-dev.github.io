@@ -9,6 +9,7 @@ import LinkedList from './linked-list.js';
 import Stack from './stack.js'
 import Queue from './queue.js'
 import Array from './array.js'
+import Heap from './heap.js'
 
 const prefix = "/data-structures";
 const dataStructures = [
@@ -45,7 +46,7 @@ const dataStructures = [
   {
     "name": "Heap",
     "route": "heap",
-    "page": DSADefaultPage,
+    "page": Heap,
   },
   {
     "name": "Tree",
