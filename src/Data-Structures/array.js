@@ -39,26 +39,36 @@ function Demo() {
   const [addVal, setAddVal] = useState(-1);
   const [length, setLength] = useState(0);
   const [index, setIndex] = useState(0);
-
+  var len=0;
   function add() {
+    if(index<length){
     var nl=Object.assign([],list)
     nl[index]={
       "value": addVal,
       "highlight": false,
       "show": true,
     }
+    len+=1
     setList(nl)
+  }else{
+    alert("Index Out of Bounds")
   }
+}
 
   function remove() {
+    if(len>0){
     var nl=Object.assign([],list)
     nl[index]={
       "value": " ",
       "highlight": false,
       "show": true,
     }
+    len-=1;
     setList(nl)
+  }else{
+    alert("No elements in array")
   }
+}
 
   function onExited() {
     setList(list.slice(1));

@@ -189,6 +189,7 @@ function Demo() {
           var nxt = nl[index].next //next pointer
           //nl[index].next = nxt
           setStart(nxt)
+          setEnd(nxt)
           nl.splice(index,1)
           console.log(nl)
           setList(nl)

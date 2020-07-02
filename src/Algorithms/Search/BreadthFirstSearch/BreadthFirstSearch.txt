@@ -1,0 +1,17 @@
+An alternative algorithm called Breath-First search provides us with the ability to return the same results as DFS but with the added guarantee to return the shortest-path first.
+
+Rules of BFS Algorithm
+
+    A queue (FIFO-First in First Out) data structure is used by BFS.
+    You mark any node in the graph as root and start traversing the data from it.
+    BFS traverses all the nodes in the graph and keeps dropping them as completed.
+    BFS visits an adjacent unvisited node, marks it as done, and inserts it into a queue.
+    Removes the previous vertex from the queue in case no adjacent vertex is found.
+    BFS algorithm iterates until all the vertices in the graph are successfully traversed and marked as completed.
+    There are no loops caused by BFS during the traversing of data from any node.
+
+Some Applications of BFS 
+
+    To build index by search index
+        For GPS navigation
+Path finding algorithms

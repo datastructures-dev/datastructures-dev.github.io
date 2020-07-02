@@ -1,3 +1,6 @@
+#Depth First Search Algorithim
+#Ryan Goudie
+
 import sys
 def ret_graph():
     return  {
