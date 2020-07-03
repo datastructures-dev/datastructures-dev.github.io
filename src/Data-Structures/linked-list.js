@@ -114,6 +114,7 @@ function Demo() {
   //make em global
   var idx = null;
   var found = false;
+  var prev=null;
 
   function searchRemove(searchVal) {
     setList(list.map((v, i) => Object.assign({}, v, {
@@ -146,9 +147,10 @@ function Demo() {
         console.log("Found")
         //clearInterval(cancel)
       } else {
+        prev=index;
         index = list[index].next;
       }
-    }, 500);
+    }, 200);
 
 
 
@@ -164,27 +166,25 @@ function Demo() {
       } else {
         //found something. Kill it
         var nl = Object.assign([], list)
-        var prev = null //prev pointer
-        var index = start;
-        while (index !== idx) {
-          prev = index
-          index = list[index].next
-          console.log("Here "+ prev + " " + index)
-        }
-        console.log("tHere "+ prev + " " + index)
+        var index = idx;
+       //alert("Found at: "+idx)
 
-        if (prev === null && nl[index].next === -1) {
+        if (nl[index].next === -1 && prev===null) {
           //only one element
+         // alert("Only 1")
           setStart(-1)
+          setEnd(-1)
           setList([])
 
         } else if(prev!==null){
+       //   alert("Not first")
           //not first element
           var next = nl[index].next //next pointer
           nl[prev].next = next
           console.log(nl)
           setList(nl)
         }else{
+         // alert("First")
           //first element
           var nxt = nl[index].next //next pointer
           //nl[index].next = nxt
@@ -197,7 +197,7 @@ function Demo() {
 
       }
 
-    }, 2000);
+    }, 2500);
   }
 
 
