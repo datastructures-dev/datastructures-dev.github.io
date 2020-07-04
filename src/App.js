@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -24,7 +23,7 @@ export default function App() {
   });
 
   return (
-    <Router>
+    <>
       <NavBar />
       <Switch>
         <Route path="/data-structures">
@@ -46,6 +45,6 @@ export default function App() {
           <Redirect to="/404"/>
         </Route>
       </Switch>
-    </Router>
+    </>
   );
 }
