@@ -4,7 +4,9 @@ import {
   Switch,
   Route,
   Redirect,
+  useLocation,
 } from 'react-router-dom';
+import useAckee from 'use-ackee';
 import HomePage from './Pages/Home.js';
 import AboutPage from './Pages/About.js';
 import { DSRoutes, DSLinks } from './Data-Structures';
@@ -13,6 +15,14 @@ import NavBar from './Components/NavBar.js';
 import './App.css';
 
 export default function App() {
+  const location = useLocation();
+  useAckee(location.pathname, {
+    server: 'https://ackee.icedcoffee.dev',
+    domainId: '33d52b14-d0db-4bed-9395-370e46dc8000',
+  }, {
+    ignoreLocalhost: true,
+  });
+
   return (
     <Router>
       <NavBar />
