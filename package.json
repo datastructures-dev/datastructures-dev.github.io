@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "dangerously-set-html-content": "^1.0.5",
     "html-to-react": "^1.4.3",
+    "p5": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
