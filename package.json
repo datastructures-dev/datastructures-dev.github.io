@@ -15,7 +15,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-transition-group": "^4.4.1",
-    "use-ackee": "^0.3.0"
+    "use-ackee": "^0.3.0",
+    "uuid": "^8.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
